@@ -1,7 +1,0 @@
-printf("hello word");
-
-Int a, b, c;
-
-  c =  a + B;
-  c = a - b;  
-

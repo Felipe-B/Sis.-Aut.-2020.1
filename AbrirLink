@@ -1,0 +1,21 @@
+import webbrowser
+import datetime
+
+valor = False 
+teste = 0
+MinAtual = 0
+MinAnterior = 0
+tempo1 = 0
+tempo2 = 0
+
+while teste  != 1:
+    tempo = datetime.datetime.today()
+    MinAtual = tempo.minute
+    if(MinAtual - MinAnterior >= 2):
+        webbrowser.open("https://www.youtube.com/watch?v=HIwMbpAHJEU&list=RDHIwMbpAHJEU&start_radio=1")
+        MinAnterior = MinAtual
+
+    tempo1 = tempo.minute
+    if(tempo1 != tempo2):
+        print("Minuto:",tempo.minute)
+        tempo2 = tempo1

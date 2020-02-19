@@ -3,3 +3,26 @@ from urllib import request
 
 request.urlretrieve("https://prod.liveshare.vsengsaas.visualstudio.com/join?598A83D9ECCC884296507C57170D60ECB549","ImagemFelipe.jpg")
 
+-----------------------------------------------------------------------------------------------------
+
+import webbrowser
+import urllib.request
+import csv
+import pandas as pd
+
+url = input('url image: ')
+file_name = input('Nome da imagem: ')
+
+def download_image(url2):
+    urllib.request.urlretrieve(url2,file_name)
+    
+download_image(url)
+
+with open('enderecoDasImagens.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(["Nome da imagem","Caminho de origem", "Caminho de destino"])
+    writer.writerow([file_name, url, '~/Documentos/Sistemas_autonomos'])
+
+dados = pd.read_csv('/home/pedro/Documentos/Sistemas_autonomos/enderecoDasImagens.csv')
+dados.head()
+

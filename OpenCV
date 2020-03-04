@@ -1,0 +1,13 @@
+import cv2
+import urllib.request
+import numpy as np
+
+link = "https://www.w3schools.com/w3css/img_lights.jpg"
+linkRequest = urllib.request.urlopen(link)
+
+imagemArray = np.array(bytearray(linkRequest.read()), dtype=np.uint8)
+
+Imagem = cv2.imdecode(imagemArray, -1)
+cv2.imshow('URL Image', Imagem)
+cv2.imwrite("ab2.jpg", Imagem)
+cv2.waitKey()

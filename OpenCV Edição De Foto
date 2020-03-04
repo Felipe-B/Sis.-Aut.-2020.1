@@ -1,0 +1,23 @@
+import cv2
+#import urllib.request
+#import numpy as np
+
+#link = "https://www.w3schools.com/w3css/img_lights.jpg"
+#linkRequest = urllib.request.urlopen(link)
+
+#imagemArray = np.array(bytearray(linkRequest.read()), dtype=np.uint8)
+
+#Imagem = cv2.imdecode(imagemArray, -1)
+#cv2.imshow('URL Image', Imagem)
+#cv2.imwrite("ab2.jpg", Imagem)
+#cv2.waitKey()
+
+#ImagemSalva = cv2.imread("ab2.jpg")
+#px = ImagemSalva[100,100]
+#print("BGR",px )
+ImagemAzul = cv2.imread("Azul.jpg")
+blue = ImagemAzul[100,100,0]
+print(blue)
+ImagemVermelha = cv2.imread("Azul.jpg")
+red = ImagemAzul[1,0,1]
+print(red)

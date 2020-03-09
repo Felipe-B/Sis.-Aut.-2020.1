@@ -12,14 +12,14 @@ imagemArray = np.array(bytearray(linkRequest.read()), dtype=np.uint8)
 
 Imagem = cv2.imdecode(imagemArray, -1)
 cv2.imshow("URL Image", Imagem)
-cv2.imwrite("ab2.jpg", Imagem)
+cv2.imwrite("ab2.jpg", Imagem) #Salvar Imagem
 cv2.waitKey()
 cv2.destroyAllWindows()
 # Fim do comando abrir link e salvar. 
 # =============================================================================
 # Comando para abrir foto já salva.
 ImagemG = cv2.imread("Verde.jpg", 1) # 0 para Preto e Branco e 1 para Colorida 
-cv2.imshow("Imagem Aberta", ImagemG)
+cv2.imshow("Imagem De Cor", ImagemG)
 cv2.waitKey()
 cv2.destroyAllWindows()
 # Fim do comando para Abrir Imagem.
@@ -27,6 +27,14 @@ cv2.destroyAllWindows()
 # Comando para identificar a cor na cordenada X e Y
 ImagemAzul = cv2.imread("Vermelho.jpg")
 cor = ImagemAzul[100,100,2] # 0 Azul, 1 Verde, 2 vermelho
-print("Foto", cor)
+print("Cor Na Cordenada", cor)
 # Fim do comando para identificar a cor da cordenada.
+# =============================================================================
+# Comando para exibir uma parte especifica da foto.
+ImagemComp = cv2.imread("ab2.jpg",1)
+FotoCort = ImagemComp[0:400 , 0:800]
+cv2.imshow("Foto Cortada", FotoCort)
+cv2.waitKey()
+cv2.destroyAllWindows()
+# Fim do Comando para recortar foto.
 # =============================================================================

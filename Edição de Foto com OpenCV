@@ -1,0 +1,91 @@
+#Bibliotecas Importadas.
+import cv2
+import urllib.request
+import numpy as np
+# Fim da importação de bibliotecas.
+# =============================================================================
+# Comando para abrir foto de um link e salvar na maquina.
+link = "https://www.w3schools.com/w3css/img_lights.jpg"
+linkRequest = urllib.request.urlopen(link)
+
+imagemArray = np.array(bytearray(linkRequest.read()), dtype=np.uint8)
+
+Imagem = cv2.imdecode(imagemArray, -1)
+cv2.imshow("URL Image", Imagem)
+cv2.imwrite("ab2.jpg", Imagem) #Salvar Imagem
+cv2.waitKey()
+cv2.destroyAllWindows()
+# Fim do comando abrir link e salvar. 
+# =============================================================================
+# Comando para abrir foto já salva.
+ImagemG = cv2.imread("Verde.jpg", 1) # 0 para Preto e Branco e 1 para Colorida 
+cv2.imshow("Imagem De Cor", ImagemG)
+cv2.waitKey()
+cv2.destroyAllWindows()
+# Fim do comando para Abrir Imagem.
+# =============================================================================
+# Comando para identificar a cor na cordenada X e Y
+ImagemAzul = cv2.imread("Vermelho.jpg")
+cor = ImagemAzul[100,100,2] # 0 Azul, 1 Verde, 2 vermelho
+print("Cor Na Cordenada", cor)
+# Fim do comando para identificar a cor da cordenada.
+# =============================================================================
+# Comando para exibir uma parte especifica da foto.
+ImagemComp = cv2.imread("ab2.jpg",1)
+FotoCort = ImagemComp[0:400 , 400:800]
+cv2.imshow("Foto Cortada", FotoCort)
+cv2.waitKey()
+cv2.destroyAllWindows()
+# Fim do Comando para recortar foto.
+# =============================================================================
+# Comando para mudar uma cordenada de pixel de cor. 
+ImagemG[350:400, 200:800] = (255,0,0)
+ImagemG[350:800, 150:200] = (255,0,0)
+cv2.imshow("Foto Pixel Azul", ImagemG)
+cv2.waitKey()
+cv2.destroyAllWindows()
+# Fim do comando para Mudar uma coedenada de pixel de cor.
+# =============================================================================
+# Comando para redimencionar Imagem.
+Small = cv2.resize(ImagemG, (0,0), fx=0.5, fy=0.5) # Diminui pela metade.
+cv2.imshow("Foto Menor", Small)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+Small = cv2.resize(ImagemG, (100, 50))
+cv2.imshow("Foto Menor", Small)
+cv2.waitKey()
+cv2.destroyAllWindows()
+# Fim do comando para redimencionar a foto.
+# =============================================================================
+# Comando para Rotacionar e Inverter a imagem.
+ImagemRot = cv2.rotate(ImagemComp, cv2.ROTATE_90_CLOCKWISE)
+cv2.imshow("Foto rotacionada horario", ImagemRot)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+ImagemRot = cv2.rotate(ImagemComp, cv2.ROTATE_90_COUNTERCLOCKWISE)
+cv2.imshow("Foto rotacionada anti-horario", ImagemRot)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+ImagemRot = cv2.rotate(ImagemComp, cv2.ROTATE_180)
+cv2.imshow("Foto rotacionada 180", ImagemRot)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+ImagemInv = cv2.flip(ImagemComp, 0)
+cv2.imshow("Foto invertida verticalmente", ImagemInv)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+ImagemInv = cv2.flip(ImagemComp, 1)
+cv2.imshow("Foto invertida horizontalmente", ImagemInv)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+ImagemInv = cv2.flip(ImagemComp, -1)
+cv2.imshow("Foto invertida Vertical e Horizntal", ImagemInv)
+cv2.waitKey()
+cv2.destroyAllWindows()
+# Fim do comando de Rotação e inversão de imagem.

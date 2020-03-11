@@ -18,8 +18,13 @@ cv2.destroyAllWindows()
 # Fim do comando abrir link e salvar. 
 # =============================================================================
 # Comando para abrir foto já salva.
-ImagemG = cv2.imread("Verde.jpg", 1) # 0 para Preto e Branco e 1 para Colorida 
+ImagemG = cv2.imread("Verde.jpg", 1) # 1 para Colorida .
 cv2.imshow("Imagem De Cor", ImagemG)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+ImagemPB = cv2.imread("ab2.jpg", 0) # 0 para Preto e Branco. 
+cv2.imshow("Imagem De Cor", ImagemPB)
 cv2.waitKey()
 cv2.destroyAllWindows()
 # Fim do comando para Abrir Imagem.
@@ -38,21 +43,24 @@ cv2.waitKey()
 cv2.destroyAllWindows()
 # Fim do Comando para recortar foto.
 # =============================================================================
-# Comando para mudar uma cordenada de pixel de cor. 
-ImagemG[350:400, 200:800] = (255,0,0)
-ImagemG[350:800, 150:200] = (255,0,0)
-cv2.imshow("Foto Pixel Azul", ImagemG)
+# Comando para mudar com a cordenada o pixel de cor.
+ImagemPx = ImagemG
+ImagemPx[350:400, 200:800] = (255,0,0)
+ImagemPx[350:800, 150:200] = (255,0,0)
+ImagemPx[350:800, 750:800] = (255,0,0)
+ImagemPx[750:800, 200:800] = (255,0,0)
+cv2.imshow("Foto Pixel Azul", ImagemPx)
 cv2.waitKey()
 cv2.destroyAllWindows()
 # Fim do comando para Mudar uma coedenada de pixel de cor.
 # =============================================================================
 # Comando para redimencionar Imagem.
-Small = cv2.resize(ImagemG, (0,0), fx=0.5, fy=0.5) # Diminui pela metade.
+Small = cv2.resize(ImagemPx, (0,0), fx=0.5, fy=0.5) # Diminui pela metade.
 cv2.imshow("Foto Menor", Small)
 cv2.waitKey()
 cv2.destroyAllWindows()
 
-Small = cv2.resize(ImagemG, (100, 50))
+Small = cv2.resize(ImagemPx, (100, 50))
 cv2.imshow("Foto Menor", Small)
 cv2.waitKey()
 cv2.destroyAllWindows()
@@ -89,3 +97,12 @@ cv2.imshow("Foto invertida Vertical e Horizntal", ImagemInv)
 cv2.waitKey()
 cv2.destroyAllWindows()
 # Fim do comando de Rotação e inversão de imagem.
+# =============================================================================
+# Comando para desfocar image. 
+ImgCFoco = cv2.imread("ab2.jpg", 1)
+ImgSFoco = cv2.GaussianBlur(ImgCFoco,(21,21),cv2.BORDER_DEFAULT) 
+cv2.imshow("Foto Desfocada",ImgSFoco)
+cv2.waitKey()
+cv2.destroyAllWindows()
+# Fim do comando para desfocar.
+# =============================================================================
